@@ -7,6 +7,12 @@ An AI assistant that answers questions about enterprise policies and documents.
 - Interactive Streamlit UI
 - Document upload and processing
 - Chat history
+- Smart update system:
+  * Detects changed portions of documents
+  * Updates only modified chunks
+  * Preserves embeddings for unchanged content
+  * Semantic-aware chunking for tables
+  * Efficient version tracking
 
 ## Version Control Process
 When updating policy documents:
@@ -56,22 +62,31 @@ The document processor includes intelligent updating capabilities:
   * Chunks added/removed
 
 ## Setup
-1. Install dependencies:
+1. Create and activate Conda environment:
+```bash
+# Create new environment with Python 3.11
+conda create -n enterprise python=3.11
+
+# Activate the environment
+conda activate enterprise
+```
+
+2. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-2. Create a `.env` file with your OpenAI API key:
+3. Create a `.env` file with your OpenAI API key:
 ```
 OPENAI_API_KEY=your_api_key_here
 ```
 
-3. Process your documents:
+4. Process your documents:
 ```bash
 python process_documents.py
 ```
 
-4. Run the Streamlit app:
+5. Run the Streamlit app:
 ```bash
 streamlit run app.py
 ```
